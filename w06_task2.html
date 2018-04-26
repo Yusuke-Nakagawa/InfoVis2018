@@ -24,7 +24,7 @@
 		varying vec4 point_position;
 		varying vec3 normal_vector;
 		uniform vec3 light_position;
-		vec3 PhongReflection( vec3 C, vec3 L, vec3 N )
+		vec3 PhongReflection( vec3 C, vec3 L, vec3 N, vec3 V )
 		{
 			float ka = 0.3;
 			float kd = 0.5;
@@ -41,12 +41,14 @@
 			float Is = ks * ds;
 			return C * ( Ia + Id + Is);
 		}
+		
 		void main()
 		{
 			vec3 C = point_color;
 			vec3 L = normalize( light_position - point_position.xyz );
 			vec3 N = normalize( normal_vector );
-			vec3 shaded_color = LambertianReflection( C, L, N );
+			vec3 V = normalize(-point_position.xyz);
+			vec3 shaded_color = LambertianReflection( C, L, N, V );
 			gl_FragColor = vec4( shaded_color, 1.0 );
 		}
 	</script>
