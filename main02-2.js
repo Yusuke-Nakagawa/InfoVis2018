@@ -25,8 +25,8 @@ function main()
 
     var material = new THREE.ShaderMaterial({
         vertexColors: THREE.VertexColors,
-        vertexShader: document.getElementById('phong.vert').text,
-        fragmentShader: document.getElementById('phong.frag').text,
+        vertexShader: document.getElementById('gouraud.vert').text,
+        fragmentShader: document.getElementById('gouraud.frag').text,
         uniforms: {
            light_position: { type: 'v3', value: light.position }
         }
